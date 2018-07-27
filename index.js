@@ -1,7 +1,7 @@
-module.exports = function argsToObject (args) {
-  const isFlag = arg => arg && !arg.startsWith('--')
-  const isNumber = value => parseInt(value) === +value
+const isFlag = arg => arg && !arg.startsWith('--')
+const isNumber = value => parseInt(value) === +value
 
+module.exports = function argsToObject (args) {
   return args.reduce((asObject, arg, index) => {
     const value = args[index + 1]
     const key = arg.replace(/^--/, '')
