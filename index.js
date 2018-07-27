@@ -1,6 +1,6 @@
 module.exports = function cliArgsParser (args) {
-  const isFlag = arg => !arg.startsWith('--')
-  const nextIsValue = next => next && next.startsWith && !next.startsWith('--')
+  const isFlag = arg => arg && !arg.startsWith('--')
+  const nextIsValue = next => next && !next.startsWith('--')
   const nextIsNumber = next => parseInt(next) === +next
 
   return args.reduce((asObject, arg, index) => {
