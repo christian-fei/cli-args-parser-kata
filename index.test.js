@@ -1,4 +1,5 @@
 /* globals test */
+const cliArgsParser = require('.')
 const assert = require('assert')
 
 test('parses a `simple flag`', () => {
@@ -17,17 +18,3 @@ test('parse multiple flags at once', () => {
   const args = cliArgsParser(['--foo', '--bar', 'baz', '--number', '1'])
   assert.deepEqual(args, {'bar': 'baz', 'foo': true, 'number': 1})
 })
-
-function cliArgsParser (args) {
-  return args.reduce((acc, arg, i, args) => {
-    const next = args[i + 1]
-    const argAsKey = arg.replace(/^--/, '')
-    if (arg.startsWith('--')) {
-      let value = (next && next.startsWith && !next.startsWith('--')) ? next : true
-      if (parseInt(value) === +value) value = parseInt(value)
-
-      acc[argAsKey] = value
-    }
-    return acc
-  }, {})
-}
