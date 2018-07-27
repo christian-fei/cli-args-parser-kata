@@ -1,14 +1,14 @@
 module.exports = function argsToObject (args) {
   const isFlag = arg => arg && !arg.startsWith('--')
-  const nextIsValue = next => next && !next.startsWith('--')
-  const nextIsNumber = next => parseInt(next) === +next
+  const nextIsValue = value => value && !value.startsWith('--')
+  const nextIsNumber = value => parseInt(value) === +value
 
   return args.reduce((asObject, arg, index) => {
-    const next = args[index + 1]
+    const value = args[index + 1]
     const key = arg.replace(/^--/, '')
     if (isFlag(arg)) return asObject
-    if (nextIsValue(next)) return Object.assign(asObject, {[key]: next})
-    if (nextIsNumber(next)) return Object.assign(asObject, {[key]: parseInt(next)})
+    if (nextIsValue(value)) return Object.assign(asObject, {[key]: value})
+    if (nextIsNumber(value)) return Object.assign(asObject, {[key]: parseInt(value)})
     return Object.assign(asObject, {[key]: true})
   }, {})
 }
