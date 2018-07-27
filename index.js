@@ -1,4 +1,4 @@
-module.exports = function cliArgsParser (args) {
+module.exports = function argsToObject (args) {
   const isFlag = arg => arg && !arg.startsWith('--')
   const nextIsValue = next => next && !next.startsWith('--')
   const nextIsNumber = next => parseInt(next) === +next

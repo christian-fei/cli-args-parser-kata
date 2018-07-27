@@ -1,20 +1,20 @@
 /* globals test */
-const cliArgsParser = require('.')
+const argsToObject = require('.')
 const assert = require('assert')
 
 test('parses a `simple flag`', () => {
-  const args = cliArgsParser(['--foo'])
+  const args = argsToObject(['--foo'])
   assert.deepEqual(args, {foo: true})
 })
 test('parse a `composite` flag', () => {
-  const args = cliArgsParser(['--foo', 'bar'])
+  const args = argsToObject(['--foo', 'bar'])
   assert.deepEqual(args, {'foo': 'bar'})
 })
 test('parse a `composite` flags with integer values', () => {
-  const args = cliArgsParser(['--number', '1'])
+  const args = argsToObject(['--number', '1'])
   assert.deepEqual(args, {number: 1})
 })
 test('parse multiple flags at once', () => {
-  const args = cliArgsParser(['--foo', '--bar', 'baz', '--number', '1'])
+  const args = argsToObject(['--foo', '--bar', 'baz', '--number', '1'])
   assert.deepEqual(args, {'bar': 'baz', 'foo': true, 'number': 1})
 })
