@@ -19,6 +19,14 @@ test('parse a `composite` flags with integer values', () => {
     number: 1
   })
 })
+test('parse multiple flags at once', () => {
+  const result = parseArgs(['--foo', '--bar', 'baz', '--number', '1'])
+  assert.deepEqual(result, {
+    bar: 'baz',
+    foo: true,
+    number: 1
+  })
+})
 
 function parseArgs ([arg, ...args], result = {}, flag = undefined) {
   if (arg && arg.startsWith && arg.startsWith('--')) {
