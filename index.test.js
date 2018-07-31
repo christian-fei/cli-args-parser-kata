@@ -27,6 +27,14 @@ test('parse multiple flags at once', () => {
     number: 1
   })
 })
+test('try to support both `string` and `array` input formats', () => {
+  const result = parseArgs('["--foo", "--bar", "baz", "--number", "1"]')
+  assert.deepEqual(result, {
+    bar: 'baz',
+    foo: true,
+    number: 1
+  })
+})
 
 function parseArgs ([arg, ...args], result = {}, flag = undefined) {
   if (arg && arg.startsWith && arg.startsWith('--')) {
