@@ -20,18 +20,11 @@ test('parse a `composite` flags with integer values', () => {
   })
 })
 
-function parseArgs (args) {
-  const result = {}
-  let flag
-  for (const arg of args) {
-    if (flag) {
-      result[flag] = arg
-      flag = undefined
-    }
-    if (arg.startsWith && arg.startsWith('--')) {
-      flag = arg.slice(2)
-      result[flag] = true
-    }
+function parseArgs ([arg, ...args], result = {}, flag = undefined) {
+  if (arg && arg.startsWith && arg.startsWith('--')) {
+    flag = arg.slice(2)
+    return parseArgs(args, Object.assign(result, {[flag]: true}), flag)
   }
+  if (flag && arg) return parseArgs(args, Object.assign(result, {[flag]: arg}))
   return result
 }
