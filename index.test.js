@@ -7,6 +7,12 @@ test('parse a `simple` flags', () => {
     foo: true
   })
 })
+test('parse a `composite` flags', () => {
+  const result = parseArgs(['--foo', 'bar'])
+  assert.deepEqual(result, {
+    foo: 'bar'
+  })
+})
 
 function parseArgs (args) {
   return { foo: true }
