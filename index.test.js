@@ -1,6 +1,9 @@
 /* globals test */
 const assert = require('assert')
 
-test('works', () => {
-  assert.ok(!!42)
+test('parse a `simple` flags', () => {
+  const result = null
+  assert.deepEqual(result, {
+    foo: true
+  })
 })
