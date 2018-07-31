@@ -13,6 +13,12 @@ test('parse a `composite` flags', () => {
     foo: 'bar'
   })
 })
+test('parse a `composite` flags with integer values', () => {
+  const result = parseArgs(['--number', '1'])
+  assert.deepEqual(result, {
+    number: 1
+  })
+})
 
 function parseArgs (args) {
   if (args.length === 2 && args[0] === '--foo' && args[1] === 'bar') return { foo: 'bar' }
