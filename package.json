@@ -4,7 +4,7 @@
   "description": "cli-args-parser-kata === The goal of this program is to model a cli arguments parser. Given a series of input the program should produce a valid output according to the following specification.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "m.test index.test.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/christian-fei/cli-args-parser-kata/issues"
   },
-  "homepage": "https://github.com/christian-fei/cli-args-parser-kata#readme"
+  "homepage": "https://github.com/christian-fei/cli-args-parser-kata#readme",
+  "devDependencies": {
+    "m.test": "0.0.57"
+  }
 }
