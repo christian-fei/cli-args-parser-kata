@@ -13,7 +13,7 @@ test('parse a `composite` flags', () => {
     foo: 'bar'
   })
 })
-test.skip('parse a `composite` flags with integer values', () => {
+test('parse a `composite` flags with integer values', () => {
   const result = parseArgs(['--number', '1'])
   assert.deepEqual(result, {
     number: 1
