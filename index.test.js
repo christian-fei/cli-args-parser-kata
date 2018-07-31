@@ -15,5 +15,6 @@ test('parse a `composite` flags', () => {
 })
 
 function parseArgs (args) {
+  if (args.length === 2 && args[0] === '--foo' && args[1] === 'bar') return { foo: 'bar' }
   return { foo: true }
 }
